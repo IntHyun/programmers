@@ -1,7 +1,6 @@
 function solution(rsp) {
     var answer = '';
-    var str = rsp
-    for (let item of str) {
+    for (let item of rsp) {
     switch(item) {
         case '2':
             answer += '0'
