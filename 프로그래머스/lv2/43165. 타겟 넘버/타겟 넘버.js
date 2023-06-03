@@ -1,15 +1,19 @@
 function solution(numbers, target) {
     let answer = 0;
-    getAnswer(0,0);
-    function getAnswer(x,value) {
-        if(x<numbers.length){
-            getAnswer(x+1,value + numbers[x]);
-            getAnswer(x+1,value - numbers[x]);
-        } else{
-            if(value === target){
-                answer++
+    let length = numbers.length
+    
+    function dfs(count, sum) {
+        if (count === length) {
+            if (target === sum) {
+                answer ++
             }
+            return
         }
+        dfs(count + 1, sum + numbers[count])
+        dfs(count + 1, sum - numbers[count])
     }
-    return answer;
+    
+    dfs(0, 0)
+    
+    return answer
 }
