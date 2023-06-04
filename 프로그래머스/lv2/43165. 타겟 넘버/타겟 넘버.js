@@ -1,19 +1,22 @@
-function solution(numbers, target) {
-    let answer = 0;
-    let length = numbers.length
-    
-    function dfs(count, sum) {
+    function solution(numbers, target) {
+      let length = numbers.length
+      let x = 0
+
+      function bfs(count, sum) {
         if (count === length) {
-            if (target === sum) {
-                answer ++
-            }
-            return
+          if (sum === target) {
+            x += 1
+          }
+          return
         }
-        dfs(count + 1, sum + numbers[count])
-        dfs(count + 1, sum - numbers[count])
+
+        bfs(count + 1, sum + numbers[count])
+        bfs(count + 1, sum - numbers[count])
+      }
+
+      bfs(0, 0)
+        
+        return x
+        
+    
     }
-    
-    dfs(0, 0)
-    
-    return answer
-}
